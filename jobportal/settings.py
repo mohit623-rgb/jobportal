@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,10 @@ SECRET_KEY = 'django-insecure-5oaa3nvlq#ye^+4k=a_lt+!hq-wgjosxap5-vx==oasur31+b=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jobportal-production-c098.up.railway.app',]
+CSRF_TRUSTED_ORIGINS = [
+    "https://jobportal-production-c098.up.railway.app",
+]
 
 
 # Application definition
@@ -55,6 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'jobportal.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,19 +79,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'jobportal.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'job-portal',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+      'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    
 }
+
 
 
 # Password validation
@@ -123,9 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 STATIC_URL = '/static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 
 
 # Default primary key field type
