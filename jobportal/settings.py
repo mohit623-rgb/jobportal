@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['jobportal-production-c098.up.railway.app',]
 CSRF_TRUSTED_ORIGINS = [
-    "https://jobportal-production-c098.up.railway.app",
+     'https://jobportal-production-c098.up.railway.app',
 ]
 
 
